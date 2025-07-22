@@ -1,0 +1,268 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+/* Header */
+.header {
+    background: #2c3e50;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Main Content */
+.main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.mode-container {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Editor Styles */
+.editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.editor-header h2 {
+    color: #2c3e50;
+    font-size: 1.25rem;
+}
+
+.metadata-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.metadata-input {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+#chord-editor {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    resize: vertical;
+    min-height: 300px;
+}
+
+.editor-help {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* Performance Mode Styles */
+.performance-controls {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 4px;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.control-group label {
+    font-weight: 500;
+    color: #555;
+}
+
+#transpose-display {
+    min-width: 2rem;
+    text-align: center;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* Song Display - Fixed Layout */
+.song-metadata {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #eee;
+}
+
+.song-metadata h1 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 0.25rem;
+}
+
+.song-metadata .artist {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.song-metadata .key-info {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.song-content {
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+}
+
+.song-line {
+    margin-bottom: 2.5rem;
+    display: block;
+}
+
+.chord-line {
+    height: 1.5rem;
+    margin-bottom: 0.3rem;
+    position: relative;
+    font-family: 'Courier New', monospace;
+}
+
+.lyric-line {
+    font-family: 'Courier New', monospace;
+    line-height: 1.4;
+}
+
+.chord-marker {
+    color: #e74c3c;
+    font-weight: bold;
+    font-size: 0.85em;
+    position: absolute;
+    top: 0;
+}
+
+/* Remove old chord styles completely */
+.chord, .chord-text {
+    display: none; /* Hide any old chord elements */
+}
+
+/* Buttons */
+.btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+.btn-primary {
+    background: #3498db;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #2980b9;
+}
+
+.btn-secondary {
+    background: #95a5a6;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #7f8c8d;
+}
+
+.btn-small {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+}
+
+.editor-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .main {
+        padding: 1rem;
+    }
+
+    .metadata-inputs {
+        grid-template-columns: 1fr;
+    }
+
+    .performance-controls {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .control-group {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .header,
+    .performance-controls,
+    .editor-section {
+        display: none !important;
+    }
+
+    .song-display {
+        font-size: 12pt;
+        line-height: 2;
+    }
+
+    .chord-text {
+        font-size: 10pt;
+    }
+}

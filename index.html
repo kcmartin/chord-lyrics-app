@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chord Lyrics - Song Display App</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div id="app">
+        <header class="header">
+            <h1>Chord Lyrics</h1>
+            <div class="header-controls">
+                <button id="toggle-mode" class="btn btn-primary">
+                    <span id="mode-text">Performance Mode</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="main">
+            <!-- Editor Mode -->
+            <div id="editor-mode" class="mode-container">
+                <div class="editor-section">
+                    <div class="editor-header">
+                        <h2>Song Editor</h2>
+                        <div class="editor-controls">
+                            <button id="load-example" class="btn btn-secondary">Load Example</button>
+                            <button id="clear-editor" class="btn btn-secondary">Clear</button>
+                        </div>
+                    </div>
+                    
+                    <div class="metadata-inputs">
+                        <input type="text" id="song-title" placeholder="Song Title" class="metadata-input">
+                        <input type="text" id="song-artist" placeholder="Artist" class="metadata-input">
+                        <input type="text" id="song-key" placeholder="Key (e.g., C, Am)" class="metadata-input">
+                    </div>
+
+                    <textarea 
+                        id="chord-editor" 
+                        placeholder="Enter lyrics with chords in [chord] format, e.g., [C]Hello [G]world"
+                        rows="15"
+                    ></textarea>
+                    
+                    <div class="editor-help">
+                        <p><strong>Format:</strong> Place chords in square brackets before the word: [Am]Hello [C]world</p>
+                        <p><strong>ChordPro:</strong> Use {title:}, {artist:}, {key:} for metadata</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Performance Mode -->
+            <div id="performance-mode" class="mode-container hidden">
+                <div class="performance-controls">
+                    <div class="control-group">
+                        <label>Transpose:</label>
+                        <button id="transpose-down" class="btn btn-small">♭</button>
+                        <span id="transpose-display">0</span>
+                        <button id="transpose-up" class="btn btn-small">♯</button>
+                        <button id="transpose-reset" class="btn btn-small">Reset</button>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label>Font Size:</label>
+                        <button id="font-smaller" class="btn btn-small">A-</button>
+                        <button id="font-larger" class="btn btn-small">A+</button>
+                    </div>
+                    
+                    <div class="control-group">
+                        <button id="print-song" class="btn btn-secondary">Print</button>
+                    </div>
+                </div>
+
+                <div class="song-display">
+                    <div id="song-metadata" class="song-metadata"></div>
+                    <div id="song-content" class="song-content"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/chordpro-parser.js"></script>
+    <script src="js/chord-transposer.js"></script>
+    <script src="js/song-renderer.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
